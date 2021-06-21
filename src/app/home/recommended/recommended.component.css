@@ -1,0 +1,16 @@
+.owl-carousel-custom {
+  width: 70%;
+  text-align: center;
+  margin: 0 auto !important;
+}
+.owl-carousel{
+  display: flex !important;
+flex-direction: row;
+  justify-content: center;
+
+}
+.owl-carousel .owl-stage-outer {
+  width: 50%;
+  margin: 0 auto;
+}
+

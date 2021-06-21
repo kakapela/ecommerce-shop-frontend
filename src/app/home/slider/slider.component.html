@@ -1,0 +1,48 @@
+<div class="carousel-fade">
+  <ngb-carousel
+    [showNavigationArrows]="true"
+    [showNavigationIndicators]="true"
+    [interval]="7000"
+    [keyboard]="true"
+    [pauseOnHover]="false"
+    [wrap]="true"
+    [activeId]="'sliderOne'"
+  >
+    <ng-template ngbSlide id="sliderOne">
+      <div class="picsum-img-wrapper ">
+        <img class="d-block w-100 background-darken background-center" src="assets/images/shop/img_slider_1.png"
+             alt="Carousel One">
+      </div>
+      <div class="carousel-caption">
+        <h3 class="font-alt mb-30 titan-title-size-1 text-light">DaFashion Collection</h3>
+        <h3 class="font-alt mb-30 titan-title-size-4 text-light">Lato 2021</h3>
+        <h3 class="font-alt mb-40 titan-title-size-1 text-light">Original Fashion Brand</h3>
+        <a class="section-scroll btn btn-border-w btn-round" href="#latest">Nowa kolekcja</a>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide id="sliderTwo">
+      <div class="picsum-img-wrapper">
+        <img class="d-block w-100 background-darken background-center" src="assets/images/shop/xd_1.png"
+             alt="Carousel Two">
+      </div>
+      <div class="carousel-caption">
+        <h3 class="font-alt mb-30 titan-title-size-1 text-light">DaFashion Collection</h3>
+        <h3 class="font-alt mb-30 titan-title-size-4 text-light">Lato 2021</h3>
+        <h3 class="font-alt mb-40 titan-title-size-1 text-light">Original Fashion Brand</h3>
+        <a class="section-scroll btn btn-border-w btn-round" href="#latest">Nowa kolekcja</a>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide id="sliderThree">
+      <div class="picsum-img-wrapper">
+        <img class="d-block w-100 background-darken background-center" src="assets/images/shop/xd_2.png"
+             alt="Carousel Three">
+      </div>
+      <div class="carousel-caption">
+        <h3 class="font-alt mb-30 titan-title-size-1 text-light">DaFashion Collection</h3>
+        <h3 class="font-alt mb-30 titan-title-size-4 text-light">Lato 2021</h3>
+        <h3 class="font-alt mb-40 titan-title-size-1 text-light">Original Fashion Brand</h3>
+        <a class="section-scroll btn btn-border-w btn-round" href="#latest">Nowa kolekcja</a>
+      </div>
+    </ng-template>
+  </ngb-carousel>
+</div>

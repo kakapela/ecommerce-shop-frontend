@@ -1,0 +1,18 @@
+<h4 class="font-alt">Zaloguj się</h4>
+<hr class="divider-w mb-10">
+<form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="form" >
+  <div class="form-group" >
+    <input   class="form-control" id="username" type="text" name="username" placeholder="Nazwa użytkownika" formControlName="username"/>
+    <small *ngIf= "!loginForm.get('username').valid && loginForm.get('username').touched"
+           class="form-text text-danger">Niepoprawna nazwa użytkownika!</small >
+  </div>
+  <div class="form-group">
+    <input  class="form-control" id="password" type="password" name="password" placeholder="Hasło" formControlName="password" required/>
+    <small  *ngIf= "!loginForm.get('password').valid && loginForm.get('password').touched"
+            class="form-text text-danger">Niepoprawne hasło!</small >
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-round btn-b">Zaloguj się</button>
+  </div>
+  <div class="form-group"><a href="">Zapomniałeś/aś hasła?</a></div>
+</form>

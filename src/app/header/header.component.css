@@ -1,0 +1,23 @@
+.navbar-brand-custom {
+  letter-spacing: 4px;
+  font-weight: 400;
+  font-size: 22px;
+  color: white;
+  text-transform: uppercase;
+}
+.navbar {
+  padding-top: 15px !important;
+}
+.bg-dark {
+  background: #111111 !important;
+}
+.scroll-bg {
+  background: transparent !important;
+}
+.navbar-links-custom {
+  font-family: "Roboto Condensed", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 15px;
+
+}
