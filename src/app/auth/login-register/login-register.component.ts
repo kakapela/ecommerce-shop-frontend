@@ -11,5 +11,4 @@ export class LoginRegisterComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

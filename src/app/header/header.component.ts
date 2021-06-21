@@ -1,4 +1,5 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -6,20 +7,14 @@ import {Component, HostListener, OnInit} from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  @HostListener('window:scroll', ['$event'])
 
-  onWindowScroll() {
-    let element = document.querySelector('.navbar') as HTMLElement;
-    if (window.pageYOffset > element.clientHeight) {
-      element.classList.remove('scroll-bg');
-    } else {
-
-      element.classList.add('scroll-bg');
-    }
-  }
-  constructor() { }
+  isHomePage: boolean = true;
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.route.url.subscribe( url => {
+      this.isHomePage = url[0].path === '';
+    });
   }
 
 }
