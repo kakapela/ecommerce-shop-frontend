@@ -1,4 +1,4 @@
-import {Directive, HostBinding, HostListener} from '@angular/core';
+import {Directive, HostBinding, HostListener, Input} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 
 @Directive({
@@ -7,6 +7,7 @@ import {ActivatedRoute} from "@angular/router";
 export class NavHighlightDirective {
 
   @HostBinding('style.backgroundColor') backgroundColor: string;
+  @Input() isHomePage;
 
   constructor(private route: ActivatedRoute) { }
 
