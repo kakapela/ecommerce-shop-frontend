@@ -22,6 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {CommonModule} from "@angular/common";
 import { FooterComponent } from './footer/footer.component';
 import { NavHighlightDirective } from './header/nav-highlight.directive';
+import { TextRotatorDirective } from './home/motto/text-rotator.directive';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { NavHighlightDirective } from './header/nav-highlight.directive';
     RecommendedComponent,
     FooterComponent,
     NavHighlightDirective,
+    TextRotatorDirective,
   ],
   imports: [
     BrowserModule,

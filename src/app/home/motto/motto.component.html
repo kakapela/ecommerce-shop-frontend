@@ -1,8 +1,13 @@
-<section class="bg-dark-30 module parallax mt-5" >
+<section class="bg-dark-30 module parallax mt-5">
   <div class="titan-caption">
     <div class="caption-content">
-      <div class="font-alt mb-30 titan-title-size-2 rotate">Ubieraj się jak chcesz z DaFashion, Original Fashion Brand Design</div>
-      <div class="font-alt mb-40 titan-title-size-4 rotate">Promocje do -40%, Odkryj swój własny styl</div><a class="section-scroll btn btn-border-w btn-round" href="#demos">Zobacz promocje</a>
+      <div id="motto-div"
+           [@fadeAnimation]="triggerCarousel" (@fadeAnimation.done)="showNextSentence($event)">
+        <p class="font-alt mb-30 titan-title-size-2">{{subBanners[wordCounter]}}</p>
+        <p class="font-alt mb-40 titan-title-size-4">{{mainBanners[wordCounter]}}</p>
+      </div>
     </div>
   </div>
 </section>
+
+

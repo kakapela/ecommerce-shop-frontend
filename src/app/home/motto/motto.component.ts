@@ -1,21 +1,44 @@
-import { Component, OnInit } from '@angular/core';
-declare var $: any;
+import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {animate, style, transition, trigger} from "@angular/animations";
+
 @Component({
   selector: 'app-motto',
   templateUrl: './motto.component.html',
-  styleUrls: ['./motto.component.css']
+  styleUrls: ['./motto.component.css'],
+  animations: [
+    trigger("fadeAnimation", [
+      transition("false=>true", [
+        style({opacity: 0}),
+        animate("500ms", style({opacity: 1}))
+      ]),
+      //when we write '500ms  5000ms' means that the animation spend 500ms, and start afer 5000ms
+      transition("true=>false", [animate("500ms 5000ms", style({opacity: 0}))])
+    ])
+  ]
 })
 
-export class MottoComponent implements OnInit {
+export class MottoComponent implements OnInit, AfterViewInit {
 
-  constructor() { }
+  mainBanners = ["Promocje aż do -40%", "Odkryj swój własny styl"];
+  subBanners = ["Ubieraj się jak chcesz z DaFashion", "Original Fashion Brand Design"];
+  wordCounter = -1;
+  triggerCarousel: boolean = true;
 
-  ngOnInit(): void {
-    $(".rotate").textrotator({
-      animation: "dissolve", // You can pick the way it animates when rotating through words. Options are dissolve (default), fade, flip, flipUp, flipCube, flipCubeUp and spin.
-      separator: ",", // If you don't want commas to be the separator, you can define a new separator (|, &, * etc.) by yourself using this field.
-      speed: 6000 // How many milliseconds until the next word show.
-    });
+  constructor() {
   }
 
+  showNextSentence(event: any) {
+    this.triggerCarousel = !this.triggerCarousel;
+    if (event.fromState)
+      this.wordCounter = (this.wordCounter + 1) % this.mainBanners.length;
+  }
+
+  ngOnInit(): void {
+  }
+
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.triggerCarousel = false;
+    })
+  }
 }
