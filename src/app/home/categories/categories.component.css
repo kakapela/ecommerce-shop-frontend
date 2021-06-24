@@ -76,7 +76,7 @@ background: rgba(2, 2, 2, 0.4);
 .img__wrap:hover .img__description {
   transform: translateY(0);
 }
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .img__description_layer {
     visibility: visible !important;
     opacity: 1 !important;

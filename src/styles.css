@@ -811,8 +811,7 @@ a,
 .form-control {
   font-family: "Roboto Condensed", sans-serif;
   letter-spacing: 2px;
-  font-size: 11px;
-  height: 33px;
+  font-size: 13px;
   border: 1px solid #EAEAEA;
   border-radius: 2px;
   transition: all 0.4s ease-in-out 0s;
@@ -1496,6 +1495,7 @@ General Styles - Owlcarousel
 --------------------------------------------------------------*/
 .footer {
   padding: 10px 0;
+  font-size: 16px;
 }
 
 .footer .copyright {
@@ -2013,7 +2013,7 @@ Google map
 
 .callout-title {
   font-weight: 400;
-  font-size: 16px;
+  font-size: 19px;
   color: #fff;
   margin: 0;
 }
@@ -2885,7 +2885,6 @@ Google map
   }
   .copyright,
   .footer-social-links {
-    text-align: center;
     margin: 10px 0;
   }
   /* Half-image */
