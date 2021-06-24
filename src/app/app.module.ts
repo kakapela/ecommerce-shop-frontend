@@ -10,7 +10,6 @@ import { LoginRegisterComponent } from './auth/login-register/login-register.com
 import { LoginComponent } from './auth/login-register/login/login.component';
 import { RegisterComponent } from './auth/login-register/register/register.component';
 import {HttpClientModule} from "@angular/common/http";
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SliderComponent } from './home/slider/slider.component';
 import { LatestComponent } from './home/latest/latest.component';
 import { MottoComponent } from './home/motto/motto.component';
@@ -48,7 +47,6 @@ import { NavHighlightDirective } from './header/nav-highlight.directive';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgbModule,
     CarouselModule,
     BrowserAnimationsModule
   ],
