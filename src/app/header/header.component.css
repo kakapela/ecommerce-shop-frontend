@@ -16,3 +16,20 @@
   font-size: 15px;
 
 }
+
+.shopping-cart-item {
+  max-height: 100px;
+}
+
+img {
+  float: left;
+  margin-right: 12px;
+}
+
+.item-name {
+  display: block;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+

@@ -1,30 +1,107 @@
-<nav appNavHighlight class=" navbar navbar-expand-lg navbar-dark fixed-top"
+<nav appNavHighlight class=" navbar navbar-expand-lg navbar-dark fixed-top "
      [ngClass]="{ 'bg-transparent': isHomePage, 'bg-dark' : !isHomePage}"
      [isHomePage]="isHomePage">
-  <div class="container ">
+  <div class="container pt-1">
     <a class="navbar-brand" href="#">DaFashion</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto navbar-links-custom">
+
         <li class="nav-item active">
           <a class="nav-link active" [routerLink]="'/login_register'" aria-current="page" href="#">Nowości</a>
         </li>
+
         <li class="nav-item">
-          <a class="nav-link" href="#">Koszyk</a>
+          <a class="nav-link" href="#">Kategorie</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">Kontakt</a>
+        </li>
+
+
+          <li class="nav-item dropdown">
+          <a href="" class="nav-link d-lg-none d-md-inline-block">Koszyk</a>
+          <a class="nav-link d-md-none d-lg-inline-block me-1 ms-3" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+             aria-expanded="false">
+            <i class="fas fa-shopping-cart fa-lg"></i>
+<!--            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary"-->
+<!--                  style=" font-size: 12px;">-->
+<!--                          2-->
+<!--                          <span class="visually-hidden">unread messages</span>-->
+<!--                          </span>-->
           </a>
-          <ul class="dropdown-menu navbar-links-custom" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          <ul class="dropdown-menu dropdown-menu-end navbar-links-custom overflow-auto" aria-labelledby="navbarDropdown"
+              style="min-width: 350px; max-height: 500px">
+            <li><p class="text-center mt-2">Łącznie: 184.00 zł</p></li>
+
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+
+            <li><a href="" class="dropdown-item">
+              <div class="row">
+                <div class="col-12">
+                  <img src="assets/images/shop/trends/trend1.jpg" alt="item1" class="shopping-cart-item pe-2"/>
+                  <span class="item-name text-wrap ">Sukienka z kolorowymi kwiatkami biała</span>
+                </div>
+                <div class="col-12 mt-2">
+                  <span class="d-flex justify-content-center text-wrap mx-auto text-center mb-0 ">Cena: 92.00 zł Ilość: 2</span>
+
+                </div>
+              </div>
+
+            </a></li>
+
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+
+            <li><a href="" class="dropdown-item">
+              <div class="row">
+                <div class="col-12">
+                  <img src="assets/images/shop/trends/trend3.jpg" alt="item1" class="shopping-cart-item pe-2"/>
+                  <span
+                    class="item-name text-wrap fw-bold">Spódniczka z falbanki i koszulką - idealny fit na lato 2021</span>
+                </div>
+                <div class="col-12 mt-2">
+                  <span class="d-flex justify-content-center text-wrap mx-auto text-center mb-0 ">Cena: 92.00 zł Ilość: 2</span>
+
+                </div>
+              </div>
+
+            </a></li>
+
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+
+            <li>
+              <div class="d-flex justify-content-center mt-3">
+                <button class="btn btn-dark">Kup teraz</button>
+              </div>
+
+            </li>
+
           </ul>
         </li>
+
+        <li class="nav-item ">
+          <a href="" class="nav-link d-lg-none d-md-inline-block">Konto</a>
+          <a class="nav-link d-md-none d-lg-inline-block " href="#"> <i class="fas fa-user fa-lg"></i></a>
+        </li>
+
+
+
       </ul>
     </div>
   </div>
