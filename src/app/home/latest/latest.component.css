@@ -1,9 +1,14 @@
-.add-to-cart-btn {
+.cart-button {
 text-transform: none!important;
   font-size: 11px !important;
 }
+.figure {
+  max-width: 100%;
+}
 img {
   object-fit: cover;
+  max-width:100%;
+  max-height:100%;
 }
 .img-responsive {
   width: 100%;
@@ -18,3 +23,4 @@ img {
     object-fit: cover;
   }
 }
+

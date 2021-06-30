@@ -1,13 +1,28 @@
 .parallax {
-  /* The image used */
-  background-image: url("src/assets/images/shop/parallax-bg2.jpg");
-
-  /* Set a specific height */
-  min-height: 500px;
-
-  /* Create the parallax scrolling effect */
+  background-image: url("src/assets/images/shop/background-parallax.jpg");
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.motto-caption {
+  letter-spacing: 3px;
+  font-size: 18px;
+  opacity: .8;
+
+  vertical-align: middle;
+  text-align: center;
+  height: 100%;
+  width: 70%;
+  padding-top: 180px;
+  margin: 0 auto;
+  position: relative;
+  display: table;
+}
+
+@media (max-width: 767px) {
+  .motto-caption {
+    padding-top: 0px;
+  }
 }

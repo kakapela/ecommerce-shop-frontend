@@ -15,3 +15,20 @@
   filter: brightness(80%);
 }
 
+
+.btn.btn-border-w {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  color: #fff;
+}
+
+.btn.btn-border-w:hover,
+.btn.btn-border-w:focus {
+  background: #fff;
+  border-color: transparent;
+  color: #111;
+}
+.slider-caption {
+  letter-spacing: 4px;
+  font-size: 15px;
+}

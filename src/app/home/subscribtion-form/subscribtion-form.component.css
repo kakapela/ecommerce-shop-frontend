@@ -1,0 +1,13 @@
+
+
+
+.btn.btn-g {
+  background: #e5e5e5;
+  color: #111;
+}
+
+.btn.btn-g:hover,
+.btn.btn-g:focus {
+  background: #d8d8d8;
+  color: #111;
+}

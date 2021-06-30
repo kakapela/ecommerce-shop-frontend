@@ -1,12 +1,10 @@
-<section class="bg-dark-30 module parallax mt-5">
-  <div class="titan-caption">
-    <div class="caption-content">
-      <div id="motto-div"
+<section class=" parallax darken-background module mt-5">
+  <div class="motto-caption">
+      <div id="motto-div "
            [@fadeAnimation]="triggerCarousel" (@fadeAnimation.done)="showNextSentence($event)">
-        <p class="font-alt mb-30 titan-title-size-2">{{subBanners[wordCounter]}}</p>
-        <p class="font-alt mb-40 titan-title-size-4">{{mainBanners[wordCounter]}}</p>
+        <p class="roboto-font mb-30 motto-caption text-light">{{subBanners[wordCounter]}}</p>
+        <p class="roboto-font mb-40 small-caption">{{mainBanners[wordCounter]}}</p>
       </div>
-    </div>
   </div>
 </section>
 

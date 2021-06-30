@@ -1,4 +1,14 @@
-.footer-custom {
+.footer {
 background: black;
   color: white;
+  padding: 10px 0;
+  font-size: 16px;
+}
+.footer .social-link {
+  text-align: right;
+}
+
+.footer .social-link a {
+  display: inline-block;
+  padding: 0 6px;
 }
