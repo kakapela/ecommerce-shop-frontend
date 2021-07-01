@@ -11,20 +11,19 @@ export class NavHighlightDirective {
   @HostBinding('class.bg-transparent') bgTransparent: boolean;
   @Input() isHomePage;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor() {
+  }
 
-  @HostListener('window:scroll') onScroll(eventData: Event) {
-console.log(this.isHomePage);
-
-    if(this.isHomePage)
-    {
-      if(window.pageYOffset >= 80) {
-        this.bgDark= true;
+  @HostListener('window:scroll') onScroll() {
+    if (this.isHomePage) {
+      if (window.pageYOffset >= 80) {
         this.bgTransparent = false;
+        this.bgDark = true;
+      } else {
+        this.bgDark = false;
+        this.bgTransparent = true;
       }
-
     }
-    // this.backgroundColor = window.pageYOffset >= 80 ? 'rgba(34, 34, 34, 0.9) !important' : 'transparent !important';
   }
 
 }

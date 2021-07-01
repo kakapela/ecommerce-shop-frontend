@@ -10,28 +10,28 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class LoginComponent implements OnInit {
 
-  loginForm: FormGroup;
-  loginRequestPayload: LoginRequestPayload;
+  // loginForm: FormGroup;
+  // loginRequestPayload: LoginRequestPayload;
 
   constructor(private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
-    this.loginForm = new FormGroup({
-      username: new FormControl('', Validators.required),
-      password: new FormControl('', Validators.required)
-    });
-
-    this.loginRequestPayload = {
-      username: '',
-      password: ''
-    };
+    // this.loginForm = new FormGroup({
+    //   username: new FormControl('', Validators.required),
+    //   password: new FormControl('', Validators.required)
+    // });
+    //
+    // this.loginRequestPayload = {
+    //   username: '',
+    //   password: ''
+    // };
   }
 
-  onLogin() {
-
-    console.log(this.loginForm.get('username')!.value);
-    console.log(this.loginForm.get('password')!.value);
-
-    this.router.navigateByUrl('');
-  }
+  // onLogin() {
+  //
+  //   console.log(this.loginForm.get('username')!.value);
+  //   console.log(this.loginForm.get('password')!.value);
+  //
+  //   this.router.navigateByUrl('');
+  // }
 }
