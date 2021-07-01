@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -9,12 +9,18 @@ import {ActivatedRoute} from "@angular/router";
 export class HeaderComponent implements OnInit {
 
   isHomePage: boolean = true;
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
-    this.route.url.subscribe( url => {
-      this.isHomePage = url[0].path == '';
+
+    this.router.events.subscribe((route) => {
+      if(route instanceof NavigationEnd){
+        this.isHomePage = route.url.slice(1) == '';
+      }
     });
+
+
+
   }
 
 }

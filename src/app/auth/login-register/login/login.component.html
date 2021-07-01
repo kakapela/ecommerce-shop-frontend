@@ -4,13 +4,13 @@
 <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
   <div class="mb-3">
     <label for="username" class="form-text">Nazwa użytkownika</label>
-    <input class="form-control" id="username" type="text" name="username" placeholder="Nazwa użytkownika" formControlName="username" aria-describedby="username">
+    <input class="form-control" id="username" type="text" name="username" placeholder="Nazwa użytkownika" aria-describedby="username">
     <small *ngIf= "!loginForm.get('username').valid && loginForm.get('username').touched"
            class="form-text text-danger">Niepoprawna nazwa użytkownika!</small >
   </div>
   <div class="mb-4">
     <label for="password" class="form-text">Hasło</label>
-    <input class="form-control" id="password" type="password" name="password" placeholder="Hasło" formControlName="password" aria-describedby="password">
+    <input class="form-control" id="password" type="password" name="password" placeholder="Hasło"  aria-describedby="password">
     <small  *ngIf= "!loginForm.get('password').valid && loginForm.get('password').touched"
             class="form-text text-danger">Niepoprawne hasło!</small >
   </div>
