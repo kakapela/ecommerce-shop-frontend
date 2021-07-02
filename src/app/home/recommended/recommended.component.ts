@@ -40,6 +40,7 @@ export class RecommendedComponent implements OnInit {
     }
   ]
   constructor() { }
+
   customOptions: OwlOptions = {
     loop: true,
     autoplay: true,
@@ -50,7 +51,7 @@ export class RecommendedComponent implements OnInit {
     mouseDrag: true,
     touchDrag: true,
     pullDrag: true,
-    dots: false,
+    dots: true,
     navSpeed: 600,
     navText: ['&#8249', '&#8250;'],
     responsive: {
@@ -72,6 +73,7 @@ export class RecommendedComponent implements OnInit {
     },
     nav: false
   }
+
   ngOnInit(): void {
   }
 
