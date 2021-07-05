@@ -1,23 +1,74 @@
-<!--<h4 class="roboto-font">Rejestracja</h4>-->
-<!--<hr class="divider-w mb-10">-->
+<h4 class="roboto-font">Rejestracja</h4>
+<hr class="divider-w mb-10">
 
-<!--<form >-->
+<form [formGroup]="signupForm" (ngSubmit)="onSignup()">
 
-<!--  <div class="mb-3">-->
-<!--    <label for="username" class="form-text">Nazwa użytkownika</label>-->
-<!--    <input class="form-control " id="username" type="text" name="username" placeholder="Nazwa użytkownika" aria-describedby="username">-->
-<!--  </div>-->
+  <div class="mb-3">
+    <label for="username-signup" class="form-text">Nazwa użytkownika</label>
+    <input class="form-control "
+           id="username-signup"
+           type="text"
+           placeholder="Nazwa użytkownika"
+           aria-describedby="username-signup"
+           name="username-signup"
+           formControlName="username-signup">
+    <div class="form-text text-danger"
+         *ngIf="!signupForm.get('username-signup').valid && signupForm.get('username-signup').touched ||
+          (!signupForm.get('username-signup').valid && submitted)">
+      Nazwa użytkownika nie może być pusta!
+    </div>
+  </div>
 
-<!--  <div class="mb-3">-->
-<!--    <label for="password" class="form-text">Hasło</label>-->
-<!--    <input class="form-control" id="password" type="password" name="password" placeholder="Hasło" aria-describedby="password">-->
-<!--  </div>-->
+  <div class="mb-3">
+    <label for="email" class="form-text">Adres e-mail</label>
+    <input class="form-control"
+           id="email"
+           type="email"
+           placeholder="Adres e-mail"
+           aria-describedby="email"
+           name="email"
+           formControlName="email">
+    <div class="form-text text-danger"
+         *ngIf="(!signupForm.get('email').valid && signupForm.get('email').touched) ||
+                  (submitted && !signupForm.get('email').valid)">
+      Nieprawidłowy adres e-mail!
+    </div>
+  </div>
 
-<!--  <div class="mb-4">-->
-<!--    <label for="confirm_password" class="form-text">Powtórz Hasło</label>-->
-<!--    <input class="form-control" id="confirm_password" type="password" name="confirm_password" placeholder="Powtórz Hasło"-->
-<!--           aria-describedby="confirm_password">-->
-<!--  </div>-->
+  <div formGroupName="passwordGroup">
+    <div class="mb-3">
+      <label for="password-signup" class="form-text">Hasło</label>
+      <input class="form-control"
+             id="password-signup"
+             type="password"
+             placeholder="Hasło"
+             aria-describedby="password-signup"
+             name="password-signup"
+             formControlName="password-signup">
+      <div class="form-text text-danger"
+           *ngIf="(!signupForm.get('passwordGroup.password-signup').valid && signupForm.get('passwordGroup.password-signup').touched) ||
+                  (submitted && !signupForm.get('passwordGroup.password-signup').valid)">
+        Hasło musi zawierać minimum 8 znaków oraz maksymalnie 20 znaków.
+      </div>
+    </div>
 
-<!--  <button type="submit" class="btn btn-round btn-black " >Zarejestruj</button>-->
-<!--</form>-->
+    <div class="mb-4">
+      <label for="password-confirm" class="form-text">Powtórz Hasło</label>
+      <input class="form-control"
+             id="password-confirm"
+             type="password"
+             placeholder="Powtórz Hasło"
+             aria-describedby="password-confirm"
+             name="password-confirm"
+             formControlName="password-confirm">
+
+      <div class="form-text text-danger"
+           *ngIf="(signupForm.get('passwordGroup.password-confirm').touched && signupForm.get('passwordGroup').hasError('notSame')) ||
+                (submitted && !signupForm.get('passwordGroup.password-confirm').valid)">
+        Podane hasła muszą być identyczne
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-round btn-black">Zarejestruj</button>
+</form>
+

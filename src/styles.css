@@ -50,7 +50,7 @@
   font-family: "Roboto Condensed", sans-serif;
   letter-spacing: 2px;
   font-size: 13px;
-  border: 1px solid #EAEAEA;
+  border: 2px solid #EAEAEA;
   border-radius: 2px;
   transition: all 0.4s ease-in-out 0s;
 }

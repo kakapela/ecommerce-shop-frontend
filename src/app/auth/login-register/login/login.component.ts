@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {LoginRequestPayload} from "./login-request-payload";
-import {ActivatedRoute, Router} from "@angular/router";
+import {Component, OnInit} from '@angular/core';
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-login',
@@ -10,28 +8,23 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class LoginComponent implements OnInit {
 
-  // loginForm: FormGroup;
-  // loginRequestPayload: LoginRequestPayload;
+  submitted = false;
 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router) { }
-
-  ngOnInit(): void {
-    // this.loginForm = new FormGroup({
-    //   username: new FormControl('', Validators.required),
-    //   password: new FormControl('', Validators.required)
-    // });
-    //
-    // this.loginRequestPayload = {
-    //   username: '',
-    //   password: ''
-    // };
+  constructor() {
   }
 
-  // onLogin() {
-  //
-  //   console.log(this.loginForm.get('username')!.value);
-  //   console.log(this.loginForm.get('password')!.value);
-  //
-  //   this.router.navigateByUrl('');
-  // }
+  ngOnInit(): void {
+  }
+
+  onLogin(loginForm: NgForm) {
+    this.submitted = true;
+
+    if (loginForm.invalid) {
+      return;
+    }
+
+    console.log('Username: ', loginForm.value.username);
+    console.log('Password: ', loginForm.value.password);
+
+  }
 }

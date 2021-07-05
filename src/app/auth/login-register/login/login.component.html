@@ -1,18 +1,37 @@
-<!--<h4 class="roboto-font">Zaloguj się</h4>-->
-<!--<hr class="divider-w mb-10">-->
+<h4 class="roboto-font">Zaloguj się</h4>
+<hr class="divider-w mb-10">
 
-<!--<form [formGroup]="loginForm" (ngSubmit)="onLogin()">-->
-<!--  <div class="mb-3">-->
-<!--    <label for="username" class="form-text">Nazwa użytkownika</label>-->
-<!--    <input class="form-control" id="username" type="text" name="username" placeholder="Nazwa użytkownika" aria-describedby="username">-->
-<!--    <small *ngIf= "!loginForm.get('username').valid && loginForm.get('username').touched"-->
-<!--           class="form-text text-danger">Niepoprawna nazwa użytkownika!</small >-->
-<!--  </div>-->
-<!--  <div class="mb-4">-->
-<!--    <label for="password" class="form-text">Hasło</label>-->
-<!--    <input class="form-control" id="password" type="password" name="password" placeholder="Hasło"  aria-describedby="password">-->
-<!--    <small  *ngIf= "!loginForm.get('password').valid && loginForm.get('password').touched"-->
-<!--            class="form-text text-danger">Niepoprawne hasło!</small >-->
-<!--  </div>-->
-<!--  <button type="submit" class="btn btn-round btn-black " >Zaloguj się</button>-->
-<!--</form>-->
+<form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
+  <div class="mb-3">
+    <label for="username" class="form-text">Nazwa użytkownika</label>
+    <input
+      class="form-control"
+      id="username"
+      type="text"
+      name="username"
+      placeholder="Nazwa użytkownika"
+      aria-describedby="username"
+      ngModel
+      #username="ngModel"
+      required>
+    <div *ngIf="(!username.valid && username.touched) || (submitted && !username.valid)"
+         class="form-text text-danger">Niepoprawna nazwa użytkownika!
+    </div>
+  </div>
+  <div class="mb-4">
+    <label for="password" class="form-text">Hasło</label>
+    <input class="form-control"
+           id="password"
+           type="password"
+           name="password"
+           placeholder="Hasło"
+           aria-describedby="password"
+           ngModel
+           #password="ngModel"
+           required>
+    <div *ngIf="(!password.valid && password.touched) || (submitted && !password.valid)"
+         class="form-text text-danger">Niepoprawne hasło!
+    </div>
+  </div>
+  <button type="submit" class="btn btn-round btn-black">Zaloguj się</button>
+</form>
