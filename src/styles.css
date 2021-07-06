@@ -1,3 +1,5 @@
+@import "~angular-notifier/styles";
+
 .module,
 .small-module {
   position: relative;

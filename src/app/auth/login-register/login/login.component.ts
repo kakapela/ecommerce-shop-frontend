@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForm} from "@angular/forms";
+import {NotificationService} from "../../../shared/notification.service";
+import {NotificationType} from "../../../enum/notification-type";
 
 @Component({
   selector: 'app-login',
@@ -10,7 +12,7 @@ export class LoginComponent implements OnInit {
 
   submitted = false;
 
-  constructor() {
+  constructor(private notificationService: NotificationService) {
   }
 
   ngOnInit(): void {
@@ -25,6 +27,5 @@ export class LoginComponent implements OnInit {
 
     console.log('Username: ', loginForm.value.username);
     console.log('Password: ', loginForm.value.password);
-
   }
 }

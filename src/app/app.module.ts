@@ -21,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {CommonModule} from "@angular/common";
 import { FooterComponent } from './footer/footer.component';
 import { NavHighlightDirective } from './header/nav-highlight.directive';
+import {NotificationModule} from "./notification/notification.module";
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { NavHighlightDirective } from './header/nav-highlight.directive';
     ReactiveFormsModule,
     HttpClientModule,
     CarouselModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NotificationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

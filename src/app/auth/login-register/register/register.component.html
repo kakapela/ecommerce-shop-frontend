@@ -35,6 +35,38 @@
     </div>
   </div>
 
+  <div class="mb-3">
+    <label for="firstName" class="form-text">Imię</label>
+    <input class="form-control"
+           id="firstName"
+           type="text"
+           placeholder="Imię"
+           aria-describedby="firstName"
+           name="firstName"
+           formControlName="firstName">
+    <div class="form-text text-danger"
+         *ngIf="(!signupForm.get('firstName').valid && signupForm.get('firstName').touched) ||
+                  (submitted && !signupForm.get('firstName').valid)">
+      Pole imię nie może być puste!
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="lastName" class="form-text">Nazwisko</label>
+    <input class="form-control"
+           id="lastName"
+           type="text"
+           placeholder="Nazwisko"
+           aria-describedby="lastName"
+           name="lastName"
+           formControlName="lastName">
+    <div class="form-text text-danger"
+         *ngIf="(!signupForm.get('lastName').valid && signupForm.get('lastName').touched) ||
+                  (submitted && !signupForm.get('lastName').valid)">
+      Nieprawidłowy adres e-mail!
+    </div>
+  </div>
+
   <div formGroupName="passwordGroup">
     <div class="mb-3">
       <label for="password-signup" class="form-text">Hasło</label>
@@ -48,7 +80,7 @@
       <div class="form-text text-danger"
            *ngIf="(!signupForm.get('passwordGroup.password-signup').valid && signupForm.get('passwordGroup.password-signup').touched) ||
                   (submitted && !signupForm.get('passwordGroup.password-signup').valid)">
-        Hasło musi zawierać minimum 8 znaków oraz maksymalnie 20 znaków.
+        Hasło musi zawierać minimum 8 znaków oraz maksymalnie 30 znaków.
       </div>
     </div>
 
