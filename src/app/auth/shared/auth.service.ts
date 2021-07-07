@@ -5,6 +5,8 @@ import {LoginRequestPayload} from "../login-register/login/login-request-payload
 import {Observable} from "rxjs";
 import {LoginResponsePayload} from "../login-register/login/login-response.payload";
 import {map} from "rxjs/operators";
+import {LogoutRequestPayload} from "../login-register/login/logout-request.payload";
+import {RegisterRequestPayload} from "../login-register/register/register-request.payload";
 
 @Injectable({
   providedIn: 'root'
@@ -25,4 +27,39 @@ export class AuthService {
         return true;
       }));
   }
+
+  signup(registerRequestPayload: RegisterRequestPayload): Observable<any>{
+    return this.http.post(`${this.host}/api/auth/signup`, registerRequestPayload, {responseType:'text'});
+  }
+
+  logout(logoutRequestPayload: LogoutRequestPayload){
+    this.http.post(`${this.host}/api/auth/logout`, logoutRequestPayload);
+    localStorage.removeItem('authenticationToken');
+    localStorage.removeItem('username');
+    localStorage.removeItem('refreshToken');
+  }
+
+  getAuthenticationToken(){
+    return localStorage.getItem('authenticationToken');
+  }
+  getUsername(){
+    return localStorage.getItem('username');
+  }
+  getRefreshToken(){
+    return localStorage.getItem('refreshToken');
+  }
+  // public isUserLoggedIn(): boolean {
+  //   let token = this.getAuthenticationToken();
+  //   if (this.token != null && this.token !== ''){
+  //     if (this.jwtHelper.decodeToken(this.token).sub != null || '') {
+  //       if (!this.jwtHelper.isTokenExpired(this.token)) {
+  //         this.loggedInUsername = this.jwtHelper.decodeToken(this.token).sub;
+  //         return true;
+  //       }
+  //     }
+  //   } else {
+  //     this.logOut();
+  //     return false;
+  //   }
+  // }
 }

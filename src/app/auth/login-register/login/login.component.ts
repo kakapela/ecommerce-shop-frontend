@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   submitted = false;
   loginRequestPayload: LoginRequestPayload;
 
-  constructor(private authService: AuthService ,private notificationService: NotificationService) {
+  constructor(private authService: AuthService , private notificationService: NotificationService) {
   }
 
   ngOnInit(): void {
