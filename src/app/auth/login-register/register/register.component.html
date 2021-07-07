@@ -101,6 +101,11 @@
       </div>
     </div>
   </div>
-  <button type="submit" class="btn btn-round btn-black">Zarejestruj</button>
+  <button type="submit" class="btn btn-round btn-black">
+    <span *ngIf="submitted" class="spinner-border spinner-border-sm me-3"></span>
+    <span *ngIf="submitted">Loading...</span>
+    <span *ngIf="!submitted">Zarejestruj</span>
+  </button>
+
 </form>
 
