@@ -7,6 +7,7 @@ import {LoginResponsePayload} from "../login-register/login/login-response.paylo
 import {map} from "rxjs/operators";
 import {LogoutRequestPayload} from "../login-register/login/logout-request.payload";
 import {RegisterRequestPayload} from "../login-register/register/register-request.payload";
+import {CustomHttpResponse} from "./custom-http-response";
 
 @Injectable({
   providedIn: 'root'
@@ -28,8 +29,8 @@ export class AuthService {
       }));
   }
 
-  signup(registerRequestPayload: RegisterRequestPayload): Observable<any>{
-    return this.http.post(`${this.host}/api/auth/signup`, registerRequestPayload, {responseType:'text'});
+  signup(registerRequestPayload: RegisterRequestPayload): Observable<CustomHttpResponse>{
+    return this.http.post<CustomHttpResponse>(`${this.host}/api/auth/signup`, registerRequestPayload);
   }
 
   logout(logoutRequestPayload: LogoutRequestPayload){

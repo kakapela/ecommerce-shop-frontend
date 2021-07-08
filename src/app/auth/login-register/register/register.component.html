@@ -63,7 +63,7 @@
     <div class="form-text text-danger"
          *ngIf="(!signupForm.get('lastName').valid && signupForm.get('lastName').touched) ||
                   (submitted && !signupForm.get('lastName').valid)">
-      Nieprawidłowy adres e-mail!
+      Pole nazwisko nie może być puste!
     </div>
   </div>
 
@@ -102,9 +102,9 @@
     </div>
   </div>
   <button type="submit" class="btn btn-round btn-black">
-    <span *ngIf="submitted" class="spinner-border spinner-border-sm me-3"></span>
-    <span *ngIf="submitted">Loading...</span>
-    <span *ngIf="!submitted">Zarejestruj</span>
+    <span *ngIf="showLoading" class="spinner-border spinner-border-sm me-3"></span>
+    <span *ngIf="showLoading">Loading...</span>
+    <span *ngIf="!showLoading">Zarejestruj</span>
   </button>
 
 </form>

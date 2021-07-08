@@ -14,6 +14,7 @@ import {HttpErrorResponse} from "@angular/common/http";
 export class RegisterComponent implements OnInit {
 // TODO - show loading zamiast submitted i bajo
   submitted = false;
+  showLoading = false;
   registerRequestPayload: RegisterRequestPayload;
 
   constructor(private formBuilder: FormBuilder, private notificationService: NotificationService,
@@ -37,8 +38,10 @@ export class RegisterComponent implements OnInit {
 
   onSignup() {
     this.submitted = true;
+    this.showLoading = true;
 
     if (this.signupForm.invalid) {
+      this.showLoading = false;
       return;
     }
 
@@ -51,16 +54,18 @@ export class RegisterComponent implements OnInit {
     };
 
     this.authService.signup(this.registerRequestPayload)
-      .subscribe(data => {
+      .subscribe(() => {
+        this.showLoading = false;
         this.submitted = false;
         this.notificationService.notify(NotificationType.SUCCESS, 'Rejestracja zakończona! Link aktywacyjny został wysłany na Twój adres mailowy.');
          this.signupForm.reset();
       }, (errorResponse:HttpErrorResponse) => {
-        this.notificationService.notify(NotificationType.ERROR,  JSON.parse(errorResponse.error).message);
-        this.submitted = false;
+        this.showLoading = false;
+        this.notificationService.notify(NotificationType.ERROR,  errorResponse.error.message);
       });
-
   }
+
+
 
   checkPasswords(group: FormGroup) {
     const password = group.get('password-signup').value;

@@ -6,9 +6,14 @@ import {NotificationType} from "../enum/notification-type";
   providedIn: 'root'
 })
 export class NotificationService {
-  constructor(private notifier: NotifierService) { }
+  constructor(private notifier: NotifierService) {
+  }
 
-  notify(type: NotificationType, message: string){
-    this.notifier.notify(type,message);
+  notify(type: NotificationType, message: string) {
+    if (message) {
+      this.notifier.notify(type, message);
+    } else {
+      this.notifier.notify(type, 'Wystąpił błąd. Prosimy spróbować ponownie później.');
+    }
   }
 }
