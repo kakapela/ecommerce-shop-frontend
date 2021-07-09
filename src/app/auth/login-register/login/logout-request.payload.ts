@@ -1,3 +1,3 @@
 export interface LogoutRequestPayload {
-  refreshtoken: string;
+  refreshToken: string;
 }

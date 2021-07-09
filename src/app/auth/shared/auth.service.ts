@@ -47,9 +47,9 @@ export class AuthService {
     if (this.getRefreshToken()) {
       console.log('mam refresh Tokena');
       this.logoutRequestPayload = {
-        refreshtoken: this.getRefreshToken()
+        refreshToken: this.getRefreshToken()
       };
-      console.log(this.logoutRequestPayload.refreshtoken);
+      console.log(this.logoutRequestPayload.refreshToken);
       this.http.post(`${this.host}/api/auth/logout`,this.logoutRequestPayload)
         .subscribe(()=> {
         });
