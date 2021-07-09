@@ -52,8 +52,9 @@ export class AuthService {
       console.log(this.logoutRequestPayload.refreshtoken);
       this.http.post(`${this.host}/api/auth/logout`,this.logoutRequestPayload)
         .subscribe(()=> {
-          this.clearLocalStorage();
         });
+      this.clearLocalStorage();
+
     }
     else {
       this.clearLocalStorage();
