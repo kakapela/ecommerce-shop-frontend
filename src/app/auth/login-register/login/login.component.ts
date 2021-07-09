@@ -45,6 +45,8 @@ export class LoginComponent implements OnInit {
       this.notificationService.notify(NotificationType.SUCCESS, 'Logowanie zakończyło się pomyślnie!');
       },errorResponse => {
         this.showLoading = false;
+        this.submitted = false;
+      loginForm.controls['password'].reset();
         this.notificationService.notify(NotificationType.ERROR, errorResponse.error.message);
       }
     );

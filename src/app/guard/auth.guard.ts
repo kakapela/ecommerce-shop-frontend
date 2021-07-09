@@ -22,8 +22,6 @@ export class AuthGuard implements CanActivate {
   private isUserLoggedIn(): boolean {
     if (this.authService.isUserLoggedIn()) return true;
 
-    console.log('GUARD! Wylogowuje...');
-
     this.authService.logout();
     this.notificationService.notify(NotificationType.ERROR, `Ta strona wymaga logowania`);
     return false;

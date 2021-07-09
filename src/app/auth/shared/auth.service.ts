@@ -9,7 +9,6 @@ import {LogoutRequestPayload} from "../login-register/login/logout-request.paylo
 import {RegisterRequestPayload} from "../login-register/register/register-request.payload";
 import {CustomHttpResponse} from "./custom-http-response";
 import {RefreshTokenPayload} from "./refresh-token-payload";
-import {JwtHelperService} from "@auth0/angular-jwt";
 import {Router} from "@angular/router";
 
 @Injectable({
@@ -19,7 +18,6 @@ export class AuthService {
   host = environment.apiUrl;
   loggedIn = false;
   refreshTokenPayload: RefreshTokenPayload;
-  jwtHelper = new JwtHelperService();
   authenticationToken: string;
   logoutRequestPayload: LogoutRequestPayload;
 
@@ -43,26 +41,20 @@ export class AuthService {
 
   logout() {
     this.authenticationToken = null;
-      console.log('to ja kacper!');
+
     if (this.getRefreshToken()) {
-      console.log('mam refresh Tokena');
       this.logoutRequestPayload = {
         refreshToken: this.getRefreshToken()
       };
-      console.log(this.logoutRequestPayload.refreshToken);
-      this.http.post(`${this.host}/api/auth/logout`,this.logoutRequestPayload)
-        .subscribe(()=> {
-        });
-      this.clearLocalStorage();
+      this.http.post(`${this.host}/api/auth/logout`, this.logoutRequestPayload).subscribe();
 
     }
-    else {
-      this.clearLocalStorage();
-    }
+
+    this.clearLocalStorage();
     this.router.navigateByUrl('/login_register');
   }
 
-  clearLocalStorage(){
+  clearLocalStorage() {
     localStorage.removeItem('authenticationToken');
     localStorage.removeItem('username');
     localStorage.removeItem('refreshToken');
@@ -78,12 +70,9 @@ export class AuthService {
           localStorage.setItem('authenticationToken', response.authenticationToken);
           localStorage.setItem('username', response.username);
           localStorage.setItem('refreshToken', response.refreshToken);
-          console.log('metoda refreshtoken(): tap')
         }),
-        catchError(err=>{
-          console.log('metoda refreshtoken(): catchError!')
+        catchError(err => {
           this.logout();
-
           return throwError(err);
         })
       );
@@ -103,24 +92,6 @@ export class AuthService {
 
   isUserLoggedIn(): boolean {
     this.authenticationToken = this.getAuthenticationToken();
-    if(this.authenticationToken !== null && this.authenticationToken !== '') {
-      if(this.jwtHelper.decodeToken(this.authenticationToken).sub != null || ''){
-        return true;
-      }
-    }
-    return false;
+    return this.authenticationToken !== null && this.authenticationToken !== '';
   }
-  // public isUserLoggedIn(): boolean {
-  //   this.authenticationToken = this.getAuthenticationToken();
-  //   if (this.authenticationToken != null && this.authenticationToken !== '') {
-  //     if (this.jwtHelper.decodeToken(this.authenticationToken).sub != null || '') {
-  //       if (!this.jwtHelper.isTokenExpired(this.authenticationToken)) {
-  //         return true;
-  //       }
-  //     }
-  //   }
-  //   // this.logout();
-  //   return false;
-  // }
-
 }
