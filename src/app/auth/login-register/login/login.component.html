@@ -33,5 +33,9 @@
          class="form-text text-danger">Niepoprawne hasło!
     </div>
   </div>
-  <button type="submit" class="btn btn-round btn-black">Zaloguj się</button>
+  <button type="submit" class="btn btn-round btn-black">
+    <span *ngIf="showLoading" class="spinner-border spinner-border-sm me-3"></span>
+    <span *ngIf="showLoading">Loading...</span>
+    <span *ngIf="!showLoading">Zaloguj się</span>
+  </button>
 </form>

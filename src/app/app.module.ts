@@ -9,7 +9,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { LoginRegisterComponent } from './auth/login-register/login-register.component';
 import { LoginComponent } from './auth/login-register/login/login.component';
 import { RegisterComponent } from './auth/login-register/register/register.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { SliderComponent } from './home/slider/slider.component';
 import { LatestComponent } from './home/latest/latest.component';
 import { MottoComponent } from './home/motto/motto.component';
@@ -22,6 +22,8 @@ import {CommonModule} from "@angular/common";
 import { FooterComponent } from './footer/footer.component';
 import { NavHighlightDirective } from './header/nav-highlight.directive';
 import {NotificationModule} from "./notification/notification.module";
+import {AuthInterceptor} from "./interceptor/auth.interceptor";
+import { ProductsComponent } from './products/products.component';
 
 
 @NgModule({
@@ -40,6 +42,7 @@ import {NotificationModule} from "./notification/notification.module";
     RecommendedComponent,
     FooterComponent,
     NavHighlightDirective,
+    ProductsComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,7 +55,9 @@ import {NotificationModule} from "./notification/notification.module";
     BrowserAnimationsModule,
     NotificationModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -12,7 +12,7 @@ import {HttpErrorResponse} from "@angular/common/http";
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-// TODO - show loading zamiast submitted i bajo
+
   submitted = false;
   showLoading = false;
   registerRequestPayload: RegisterRequestPayload;
