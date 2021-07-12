@@ -1,0 +1,12 @@
+.banner {
+  filter: brightness(80%);
+  background: url("src/assets/images/shop/xd.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  width: 100%;
+  height: 423px;
+  position:relative;
+}
+
+

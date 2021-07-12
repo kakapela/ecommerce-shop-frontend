@@ -24,6 +24,8 @@ import { NavHighlightDirective } from './header/nav-highlight.directive';
 import {NotificationModule} from "./notification/notification.module";
 import {AuthInterceptor} from "./interceptor/auth.interceptor";
 import { ProductsComponent } from './products/products.component';
+import { LoginRegisterBannerComponent } from './banners/login-register-banner/login-register-banner.component';
+import { ProductListComponent } from './product-list/product-list.component';
 
 
 @NgModule({
@@ -43,6 +45,8 @@ import { ProductsComponent } from './products/products.component';
     FooterComponent,
     NavHighlightDirective,
     ProductsComponent,
+    LoginRegisterBannerComponent,
+    ProductListComponent
   ],
   imports: [
     BrowserModule,
