@@ -26,6 +26,9 @@ import {AuthInterceptor} from "./interceptor/auth.interceptor";
 import { ProductsComponent } from './products/products.component';
 import { LoginRegisterBannerComponent } from './banners/login-register-banner/login-register-banner.component';
 import { ProductListComponent } from './product-list/product-list.component';
+import { ProductComponent } from './products/product/product.component';
+import { CommentsSectionComponent } from './comments-section/comments-section.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 
 @NgModule({
@@ -46,7 +49,10 @@ import { ProductListComponent } from './product-list/product-list.component';
     NavHighlightDirective,
     ProductsComponent,
     LoginRegisterBannerComponent,
-    ProductListComponent
+    ProductListComponent,
+    ProductComponent,
+    CommentsSectionComponent,
+    ShoppingCartComponent
   ],
   imports: [
     BrowserModule,

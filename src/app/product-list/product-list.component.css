@@ -1,18 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;800&display=swap');
 
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif
-}
-
-body {
-  background-color: bisque
-}
-
 .container {
-  margin: 30px auto
+  margin: 30px auto;
+  font-family: 'Montserrat', sans-serif
 }
 
 .navbar-nav .nav-link {
