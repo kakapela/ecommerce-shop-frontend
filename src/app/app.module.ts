@@ -29,6 +29,7 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { ProductComponent } from './products/product/product.component';
 import { CommentsSectionComponent } from './comments-section/comments-section.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import {NgxPaginationModule} from "ngx-pagination";
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
     HttpClientModule,
     CarouselModule,
     BrowserAnimationsModule,
-    NotificationModule
+    NotificationModule,
+    NgxPaginationModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}

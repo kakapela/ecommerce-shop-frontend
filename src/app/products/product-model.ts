@@ -1,11 +1,16 @@
+import {PictureModel} from "./picture-model";
+
 export class ProductModel {
   id: number;
   name: string;
   price: number;
-  pictureUrl: string;
+  currency:string;
+  description: string;
   size: number;
-  category: string;
   color: string;
   brand: string;
-  description: string;
+  category: string;
+  subcategory: string;
+  pictureUrl: string;
+  pictureUrls: PictureModel[];
 }
