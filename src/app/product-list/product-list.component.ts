@@ -17,6 +17,8 @@ export class ProductListComponent implements OnInit {
 
   currentProduct: {} = {};
 
+  productCategory: string = null;
+
   constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
@@ -28,17 +30,22 @@ export class ProductListComponent implements OnInit {
     this.currentIndex = index;
   }
 
-  getRequestParams(page: number):any{
+  getRequestParams(page: number, category: string):any{
     let params: any = {};
 
     if(page) {
       params[`page`] = page - 1;
     }
+
+    if(category){
+      params[`category`] = category;
+    }
+
     return params;
   }
 
   getProducts(): void {
-    this.productService.getAllProductsPaginated(this.getRequestParams(this.page))
+    this.productService.getAllProductsPaginated(this.getRequestParams(this.page, this.productCategory))
       .subscribe(
         response => {
           const { products, totalItems } = response;
@@ -50,6 +57,12 @@ export class ProductListComponent implements OnInit {
           console.log(error);
         }
         );
+  }
+
+  handleProductCategoryChange(category:string): void {
+    this.productCategory = category;
+    this.page = 1;
+    this.getProducts();
   }
 
   handlePageChange(event: number): void {
