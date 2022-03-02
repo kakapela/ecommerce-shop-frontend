@@ -1,4 +1,11 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {ProductService} from "../shared/services/product.service";
+import {Product} from "../shared/models/product";
+import {NotificationType} from "../../enum/notification-type";
+import {NotificationService} from "../../shared/notification.service";
+import {ActivatedRoute, Params} from "@angular/router";
+import {ShoppingCartService} from "../../shopping-cart/shared/services/shopping-cart.service";
+import {OrderProduct} from "../../shared/models/order.product";
 
 @Component({
   selector: 'app-product',
@@ -9,10 +16,40 @@ export class ProductComponent implements OnInit {
   @ViewChild('modalButton') modalButton: ElementRef;
   mainImagePath: string;
 
-  constructor() { }
+  productId: number;
+  product: Product = new Product();
+  numberOfStars: number = 0;
+  orderProduct: OrderProduct;
+
+  constructor(private productService: ProductService,
+              private notificationService: NotificationService,
+              private route: ActivatedRoute,
+              private shoppingCartService: ShoppingCartService) {
+  }
 
   ngOnInit(): void {
-      this.mainImagePath = 'assets/images/shop/single-product/single1.jpg';
+      this.route.params
+        .subscribe((params:Params)=>{
+          this.productId = params['id'];
+
+          this.productService.getProductById(this.productId)
+            .subscribe(response=>{
+                this.product = response;
+                this.mainImagePath = this.product.pictureUrls[0];
+
+                if (this.product.numberOfReviews > 900)
+                  this.numberOfStars = 5;
+                else if (this.product.numberOfReviews > 850)
+                  this.numberOfStars = 4;
+                else this.numberOfStars = 3;
+              },
+              error => {
+                this.notificationService.notify(NotificationType.ERROR,  error.error.message);
+              }
+            );
+        });
+
+
   }
 
   onChangeImage(event: any) {
@@ -20,7 +57,15 @@ export class ProductComponent implements OnInit {
   }
 
   showMainImage() {
-    console.log('showMainImage');
     this.modalButton.nativeElement.click();
   }
+
+  addToCart(product: Product, quantity: string) {
+    this.orderProduct = {
+      product: product,
+      quantity: +quantity
+    };
+    this.shoppingCartService.addToCart(this.orderProduct);
+  }
+
 }

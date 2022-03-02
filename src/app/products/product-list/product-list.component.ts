@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {ProductService} from "../shared/product.service";
-import {ProductModel} from "../products/product-model";
+import {ProductService} from "../shared/services/product.service";
+import {Product} from "../shared/models/product";
+import {NotificationType} from "../../enum/notification-type";
+import {NotificationService} from "../../shared/notification.service";
+import {ActivatedRoute, Params} from "@angular/router";
 
 @Component({
   selector: 'app-product-list',
@@ -10,24 +13,21 @@ import {ProductModel} from "../products/product-model";
 export class ProductListComponent implements OnInit {
 
   page = 1;
-  products: ProductModel[] = [];
+  products: Product[] = [];
   count = 0;
   pageSize = 16;
-  currentIndex = -1;
-
-  currentProduct: {} = {};
 
   productCategory: string = null;
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService, private notificationService: NotificationService,
+              private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-   this.getProducts();
-  }
-
-  setActiveProduct(product: ProductModel, index: number): void {
-    this.currentProduct = product;
-    this.currentIndex = index;
+   this.route.queryParams
+     .subscribe((params: Params) => {
+        this.productCategory = params['categoryName'];
+       });
+    this.getProducts();
   }
 
   getRequestParams(page: number, category: string):any{
@@ -51,10 +51,9 @@ export class ProductListComponent implements OnInit {
           const { products, totalItems } = response;
           this.products = products;
           this.count = totalItems;
-          console.log(response);
         },
         error => {
-          console.log(error);
+          this.notificationService.notify(NotificationType.ERROR, error.error.message);
         }
         );
   }

@@ -10,85 +10,120 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto navbar-links-custom">
 
-        <li class="nav-item active">
-          <a class="nav-link active"  aria-current="page" href="#">Nowości</a>
+        <li class="nav-item ">
+          <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Nowości</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" routerLink="/product-list">Kategorie</a>
+          <a class="nav-link" routerLink="/products" routerLinkActive="active">Kategorie</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" routerLink="/checkout-product">Kontakt</a>
+          <a class="nav-link" routerLink="/checkout-product" routerLinkActive="active">Kontakt</a>
         </li>
 
 
         <li class="nav-item dropdown">
-          <a href="" class="nav-link d-lg-none d-xs-inline-block">Koszyk</a>
-          <a class="nav-link d-none d-lg-inline-block me-1 ms-3" href="#" id="navbarDropdown" role="button"
+          <a [routerLink]="['/shopping-cart']" class="nav-link d-lg-none d-xs-inline-block">Koszyk</a>
+          <a class="nav-link d-none d-lg-inline-block me-1 ms-3"  id="navbarDropdown" role="button"
              data-bs-toggle="dropdown"
              aria-expanded="false">
             <i class="fas fa-shopping-cart fa-lg"></i>
-            <!--            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary"-->
-            <!--                  style=" font-size: 12px;">-->
-            <!--                          2-->
-            <!--                          <span class="visually-hidden">unread messages</span>-->
-            <!--                          </span>-->
+                        <span *ngIf="orderProductList.length > 0" class="position-absolute top-0 start-80 translate-middle badge rounded-pill bg-primary"
+                              style=" font-size: 12px;">
+                                      {{orderProductList.length}}
+                                      <span class="visually-hidden">unread messages</span>
+                                      </span>
           </a>
+
           <ul class="dropdown-menu dropdown-menu-end navbar-links-custom overflow-auto" aria-labelledby="navbarDropdown"
               style="min-width: 350px; max-height: 500px">
-            <li><p class="text-center mt-2">Łącznie: 184.00 zł</p></li>
-
+            <li><p class="text-center mt-2">Łącznie: {{totalCartValue}} zł</p></li>
 
             <li>
               <hr class="dropdown-divider">
             </li>
 
-
-            <li><a href="" class="dropdown-item">
+            <li *ngFor="let orderProduct of orderProductList"><a [routerLink]="['/products',orderProduct.product.id]" class="dropdown-item">
               <div class="row">
                 <div class="col-12">
-                  <img src="assets/images/shop/trends/trend1.jpg" alt="item1" class="shopping-cart-item pe-2"/>
-                  <span class="item-name text-wrap ">Sukienka z kolorowymi kwiatkami biała</span>
+                  <img [src]= "orderProduct.product.pictureUrls[0]" alt="item1" class="shopping-cart-item pe-2"/>
+                  <span class="item-name text-wrap ">{{orderProduct.product.name}}</span>
                 </div>
                 <div class="col-12 mt-2">
-                  <span class="d-flex justify-content-center text-wrap mx-auto text-center mb-0 ">Cena: 92.00 zł Ilość: 2</span>
+                  <span class="d-flex justify-content-center text-wrap mx-auto text-center mb-0 ">Cena: {{orderProduct.product.price}} {{orderProduct.product.currency}} Ilość: {{orderProduct.quantity}}</span>
 
                 </div>
               </div>
-
-            </a></li>
-
-
-            <li>
+            </a>
               <hr class="dropdown-divider">
             </li>
 
 
-            <li><a href="" class="dropdown-item">
-              <div class="row">
-                <div class="col-12">
-                  <img src="assets/images/shop/trends/trend3.jpg" alt="item1" class="shopping-cart-item pe-2"/>
-                  <span
-                    class="item-name text-wrap fw-bold">Spódniczka z falbanki i koszulką - idealny fit na lato 2021</span>
-                </div>
-                <div class="col-12 mt-2">
-                  <span class="d-flex justify-content-center text-wrap mx-auto text-center mb-0 ">Cena: 92.00 zł Ilość: 2</span>
-
-                </div>
-              </div>
-
-            </a></li>
 
 
-            <li>
-              <hr class="dropdown-divider">
-            </li>
+<!--            <li><a href="" class="dropdown-item">-->
+<!--              <div class="row">-->
+<!--                <div class="col-12">-->
+<!--                  <img src="assets/images/shop/trends/trend1.jpg" alt="item1" class="shopping-cart-item pe-2"/>-->
+<!--                  <span class="item-name text-wrap ">Sukienka z kolorowymi kwiatkami biała</span>-->
+<!--                </div>-->
+<!--                <div class="col-12 mt-2">-->
+<!--                  <span class="d-flex justify-content-center text-wrap mx-auto text-center mb-0 ">Cena: 92.00 zł Ilość: 2</span>-->
+
+<!--                </div>-->
+<!--              </div>-->
+
+<!--            </a></li>-->
+<!--            <li>-->
+<!--              <hr class="dropdown-divider">-->
+<!--            </li>-->
+
+
+<!--            <li><a href="" class="dropdown-item">-->
+<!--              <div class="row">-->
+<!--                <div class="col-12">-->
+<!--                  <img src="assets/images/shop/trends/trend1.jpg" alt="item1" class="shopping-cart-item pe-2"/>-->
+<!--                  <span class="item-name text-wrap ">Sukienka z kolorowymi kwiatkami biała</span>-->
+<!--                </div>-->
+<!--                <div class="col-12 mt-2">-->
+<!--                  <span class="d-flex justify-content-center text-wrap mx-auto text-center mb-0 ">Cena: 92.00 zł Ilość: 2</span>-->
+
+<!--                </div>-->
+<!--              </div>-->
+
+<!--            </a></li>-->
+
+
+<!--            <li>-->
+<!--              <hr class="dropdown-divider">-->
+<!--            </li>-->
+
+
+<!--            <li><a href="" class="dropdown-item">-->
+<!--              <div class="row">-->
+<!--                <div class="col-12">-->
+<!--                  <img src="assets/images/shop/trends/trend3.jpg" alt="item1" class="shopping-cart-item pe-2"/>-->
+<!--                  <span-->
+<!--                    class="item-name text-wrap fw-bold">Spódniczka z falbanki i koszulką - idealny fit na lato 2021</span>-->
+<!--                </div>-->
+<!--                <div class="col-12 mt-2">-->
+<!--                  <span class="d-flex justify-content-center text-wrap mx-auto text-center mb-0 ">Cena: 92.00 zł Ilość: 2</span>-->
+
+<!--                </div>-->
+<!--              </div>-->
+
+<!--            </a></li>-->
+
+
+<!--            <li>-->
+<!--              <hr class="dropdown-divider">-->
+<!--            </li>-->
 
 
             <li>
               <div class="d-flex justify-content-center mt-3">
-                <button class="btn btn-dark" routerLink="/shopping-cart">Kup teraz</button>
+                <button class="btn btn-dark" routerLink="/shopping-cart">Przejdź do koszyka</button>
               </div>
 
             </li>

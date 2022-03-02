@@ -42,6 +42,7 @@ background: rgba(2, 2, 2, 0.4);
 }
 .item:hover:before {
   opacity: 1;
+  cursor:pointer;
 }
 .img__wrap {
   position: relative;
